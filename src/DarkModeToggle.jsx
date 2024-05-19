@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { MdDarkMode, MdLightMode } from "react-icons/md";
 
 const DarkModeToggle = () => {
   const [darkMode, setDarkMode] = useState(() => {
@@ -19,11 +20,8 @@ const DarkModeToggle = () => {
   };
 
   return (
-    <button
-      onClick={toggleDarkMode}
-      className="p-2 bg-gray-200 text-gray-900 rounded"
-    >
-      {darkMode ? "Light Mode" : "Dark Mode"}
+    <button className="  text-3xl" onClick={toggleDarkMode}>
+      {darkMode ? <MdLightMode /> : <MdDarkMode />}
     </button>
   );
 };

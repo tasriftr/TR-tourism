@@ -1,6 +1,9 @@
+import { useContext } from "react";
 import DarkModeToggle from "../DarkModeToggle";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const Home = () => {
+  const { user } = useContext(AuthContext);
   return (
     <div>
       <h1>Vite + React</h1>

@@ -20,7 +20,7 @@ const Navbar = () => {
         <NavLink to="/">Login</NavLink>
       </li>
       <li>
-        <NavLink to="/">Register</NavLink>
+        <NavLink to="/register">Register</NavLink>
       </li>
     </>
   );
@@ -55,11 +55,11 @@ const Navbar = () => {
           <div>
             <div className="flex justify-center items-center">
               <img
-                className="w-20 "
+                className="w-14 "
                 src="../../public/tr-tourism-round.svg"
                 alt=""
               />
-              <h1 className="font-bold text-4xl">tourism</h1>
+              <h1 className="font-bold text-3xl">tourism</h1>
             </div>
           </div>
         </div>
@@ -68,10 +68,9 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <a className="btn">Button</a>
-        <button>
+        <div>
           <DarkModeToggle></DarkModeToggle>
-        </button>
+        </div>
       </div>
     </div>
   );
