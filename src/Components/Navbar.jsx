@@ -1,7 +1,14 @@
 import { NavLink } from "react-router-dom";
 import DarkModeToggle from "../DarkModeToggle";
+import { useContext } from "react";
+import { AuthContext } from "../Providers/AuthProvider";
 
 const Navbar = () => {
+  const { user, logout } = useContext(AuthContext);
+  const handleLogout = () => {
+    logout();
+  };
+
   const navLinks = (
     <>
       <li>
@@ -16,16 +23,20 @@ const Navbar = () => {
       <li>
         <NavLink to="/">My List</NavLink>
       </li>
-      <li>
-        <NavLink to="/">Login</NavLink>
-      </li>
-      <li>
-        <NavLink to="/register">Register</NavLink>
-      </li>
+      {!user && (
+        <>
+          <li>
+            <NavLink to="/">Login</NavLink>
+          </li>
+          <li>
+            <NavLink to="/register">Register</NavLink>
+          </li>
+        </>
+      )}
     </>
   );
   return (
-    <div className="navbar ">
+    <div className="navbar mt-2">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -55,11 +66,11 @@ const Navbar = () => {
           <div>
             <div className="flex justify-center items-center">
               <img
-                className="w-14 "
+                className="md:w-14 w-9"
                 src="../../public/tr-tourism-round.svg"
                 alt=""
               />
-              <h1 className="font-bold text-3xl">tourism</h1>
+              <h1 className="font-bold md:text-3xl text-xl">tourism</h1>
             </div>
           </div>
         </div>
@@ -68,9 +79,17 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <div>
+        <div className="flex items-center">
           <DarkModeToggle></DarkModeToggle>
         </div>
+        {user && (
+          <button
+            onClick={handleLogout}
+            className="px-3 py-2 dark:bg-gray-500 bg-slate-300 ml-3 rounded-md"
+          >
+            Logout
+          </button>
+        )}
       </div>
     </div>
   );

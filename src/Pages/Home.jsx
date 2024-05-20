@@ -4,6 +4,7 @@ import { AuthContext } from "../Providers/AuthProvider";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
+  console.log(user);
   return (
     <div>
       <h1>Vite + React</h1>
@@ -12,6 +13,7 @@ const Home = () => {
       <p className="dark:text-blue-400 text-red-600 text-6xl font-bold">
         hi how are u
       </p>
+      <p>{user?.email}</p>
     </div>
   );
 };

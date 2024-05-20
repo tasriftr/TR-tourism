@@ -6,8 +6,10 @@ import mountain from "/mountain.svg";
 import { IoMdPhotos } from "react-icons/io";
 
 const Register = () => {
-  const { createUser } = useContext(AuthContext);
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const [showPass, setShowPass] = useState(false);
+  const [registerError, setRegisterError] = useState("");
+
   // navigation systems
   const navigate = useNavigate();
   const location = useLocation();
@@ -17,9 +19,21 @@ const Register = () => {
     const form = e.target;
     const email = form.email.value;
     const password = form.password.value;
+    const image = form.image.value;
+    const name = form.name.value;
+    if (password.length < 6) {
+      setRegisterError("Password must be more then or equal to 6 character");
+      return;
+    } else if (!/[A-Z]/.test(password)) {
+      setRegisterError(
+        "Your password should have at least one uppercase character"
+      );
+      return;
+    }
     createUser(email, password)
       .then((result) => {
         console.log(result.user);
+        updateUserProfile(name, image);
         navigate(from);
       })
       .catch((error) => console.log(error.message));
@@ -43,7 +57,7 @@ const Register = () => {
             </svg>
             <input
               type="text"
-              className="grow dark:bg-gray-700"
+              className="grow dark:bg-gray-700  h-full w-full"
               placeholder="Username"
               defaultValue=""
               name="name"
@@ -91,6 +105,7 @@ const Register = () => {
               {showPass ? <FaRegEye /> : <FaEyeSlash />}
             </div>
           </label>
+
           <label className="input input-bordered flex items-center gap-2 dark:bg-gray-700">
             <IoMdPhotos />
 
@@ -101,14 +116,19 @@ const Register = () => {
               name="image"
             />
           </label>
+
           <input
             className="btn w-full dark:bg-blue-900 dark:text-gray-50 border-none"
             type="submit"
             value="Register"
           />
+          {registerError && <p className="text-red-700">{registerError}</p>}
         </form>
         <p className="text-center">
-          Already have an account <Link>Login</Link>
+          Already have an account?{" "}
+          <Link to="/login" className="underline font-bold">
+            Login
+          </Link>
         </p>
       </div>
       <div className="w-[400px] md:w-[500] lg:w-[600px]">
