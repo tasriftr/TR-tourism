@@ -4,6 +4,7 @@ import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
   onAuthStateChanged,
+  signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
   updateProfile,
@@ -20,10 +21,18 @@ const AuthProvider = ({ children }) => {
   // create user
   const createUser = (email, password) => {
     setLoading(true);
+    toast.success("User registered");
     return createUserWithEmailAndPassword(auth, email, password);
+  };
+  // sign in user
+  const signInUser = (email, password) => {
+    setLoading(true);
+    toast.success("Logged in Successfully");
+    return signInWithEmailAndPassword(auth, email, password);
   };
   // update user
   const updateUserProfile = (name, image) => {
+    toast.success("User updated");
     return updateProfile(auth.currentUser, {
       displayName: name,
       photoURL: image,
@@ -37,6 +46,7 @@ const AuthProvider = ({ children }) => {
   //github sign in
   const githubLogin = () => {
     setLoading(true);
+
     return signInWithPopup(auth, githubProvider);
   };
   // logout
@@ -65,6 +75,7 @@ const AuthProvider = ({ children }) => {
     githubLogin,
     updateUserProfile,
     logout,
+    signInUser,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>

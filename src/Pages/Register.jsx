@@ -24,9 +24,9 @@ const Register = () => {
     if (password.length < 6) {
       setRegisterError("Password must be more then or equal to 6 character");
       return;
-    } else if (!/[A-Z]/.test(password)) {
+    } else if (!/(?=.*[A-Z])(?=.*[a-z])/.test(password)) {
       setRegisterError(
-        "Your password should have at least one uppercase character"
+        "Password contain at least one uppercase and lower case character"
       );
       return;
     }
@@ -44,8 +44,12 @@ const Register = () => {
   return (
     <div className="flex flex-col-reverse md:flex-row items-center justify-center md:justify-between w-full h-screen animated-bg lg:px-32 md:px-2 gap-5">
       <div className="dark:bg-gray-800 bg-gray-200 px-6 py-8 rounded-xl ">
-        <h3 className="text-3xl mx-auto text-center">Register</h3>
-        <form onSubmit={handleRegister} className="p-5 flex flex-col space-y-2">
+        <h3 className="text-3xl mx-auto text-center font-semibold">Register</h3>
+        <div className="w-10/12 mx-auto border-t border mt-4 border-gray-300 "></div>
+        <form
+          onSubmit={handleRegister}
+          className="p-5 flex flex-col space-y-2 "
+        >
           <label className="input input-bordered flex items-center gap-2 dark:bg-gray-700">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -61,6 +65,7 @@ const Register = () => {
               placeholder="Username"
               defaultValue=""
               name="name"
+              required
             />
           </label>
           <label className="input input-bordered flex items-center gap-2 dark:bg-gray-700">
@@ -78,6 +83,7 @@ const Register = () => {
               className="grow dark:bg-gray-700"
               placeholder="Email"
               name="email"
+              required
             />
           </label>
 
@@ -100,9 +106,10 @@ const Register = () => {
               placeholder="Password"
               defaultValue=""
               name="password"
+              required
             />
-            <div onClick={showPassword}>
-              {showPass ? <FaRegEye /> : <FaEyeSlash />}
+            <div className="cursor-pointer" onClick={showPassword}>
+              {showPass ? <FaEyeSlash /> : <FaRegEye />}
             </div>
           </label>
 
