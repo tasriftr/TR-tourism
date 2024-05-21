@@ -3,6 +3,7 @@ import MainLayout from "../Layout.jsx/MainLayout";
 import Home from "../Pages/Home";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
+import AddSpot from "../Pages/AddSpot";
 
 const router = createBrowserRouter([
   {
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
       {
         path: "/login",
         element: <Login></Login>,
+      },
+      {
+        path: "/addspot",
+        element: <AddSpot></AddSpot>,
       },
     ],
   },
