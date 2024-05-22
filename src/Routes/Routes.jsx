@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import Register from "../Pages/Register";
 import Login from "../Pages/Login";
 import AddSpot from "../Pages/AddSpot";
+import SpotDetails from "../Pages/SpotDetails";
 
 const router = createBrowserRouter([
   {
@@ -26,6 +27,12 @@ const router = createBrowserRouter([
       {
         path: "/addspot",
         element: <AddSpot></AddSpot>,
+      },
+      {
+        path: "/spotdetails/:id",
+        element: <SpotDetails></SpotDetails>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5300/spot/${params.id}`),
       },
     ],
   },

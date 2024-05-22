@@ -79,13 +79,13 @@ const Navbar = () => {
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
       </div>
       <div className="navbar-end">
-        <div className="flex items-center">
+        <div className="flex items-center hover:scale-105 font">
           <DarkModeToggle></DarkModeToggle>
         </div>
         {user && (
           <button
             onClick={handleLogout}
-            className="px-3 py-2 dark:bg-gray-500 bg-slate-300 ml-3 rounded-md"
+            className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 btn border-none text-gray-200 hover:bg-black transition-all  border ml-3 "
           >
             Logout
           </button>
