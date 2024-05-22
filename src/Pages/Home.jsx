@@ -9,10 +9,7 @@ const Home = () => {
   const spots = useLoaderData();
   console.log(user);
   return (
-    <div>
-      <h1>Vite + React</h1>
-      <DarkModeToggle />
-
+    <div className="w-full mx-auto">
       <p className="dark:text-blue-400 text-red-600 text-6xl font-bold">
         hi how are u
       </p>
