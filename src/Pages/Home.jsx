@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import DarkModeToggle from "../DarkModeToggle";
 import { AuthContext } from "../Providers/AuthProvider";
+import { useLoaderData } from "react-router-dom";
+import TouristSpot from "../Components/TouristSpot";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
+  const spots = useLoaderData();
   console.log(user);
   return (
     <div>
@@ -14,6 +17,7 @@ const Home = () => {
         hi how are u
       </p>
       <p>{user?.email}</p>
+      <TouristSpot spots={spots}></TouristSpot>
     </div>
   );
 };

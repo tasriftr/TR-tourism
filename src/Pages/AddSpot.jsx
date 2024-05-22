@@ -26,6 +26,7 @@ const AddSpot = () => {
     const average_cost = form.average_cost.value;
     const short_description = form.short_description.value;
     const seasonality = form.seasonality.value;
+    const totalVisitorsPerYear = form.totalVisitorsPerYear.value;
     const travel_time = form.travel_time.value;
     const user_name = user.displayName;
     const email = user.email;
@@ -42,6 +43,7 @@ const AddSpot = () => {
       photo,
       user_name,
       email,
+      totalVisitorsPerYear,
     };
     console.log(newSpot);
     // send data to backend
@@ -211,13 +213,15 @@ const AddSpot = () => {
         <div className="md:flex md:gap-2 mb-2">
           <div className="form-control md:w-1/2">
             <label className="label">
-              <span className="label-text dark:text-white">Location</span>
+              <span className="label-text dark:text-white">
+                Visitor per Year
+              </span>
             </label>
             <label className="input-group">
               <input
-                name="location"
+                name="totalVisitorsPerYear"
                 type="text"
-                placeholder="Location "
+                placeholder="Visitor/Year "
                 className="input input-bordered w-full dark:bg-gray-700"
               />
             </label>
