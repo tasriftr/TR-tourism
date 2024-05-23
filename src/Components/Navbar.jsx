@@ -8,6 +8,7 @@ const Navbar = () => {
   const handleLogout = () => {
     logout();
   };
+  const userId = user?.email;
 
   const navLinks = (
     <>
@@ -21,7 +22,7 @@ const Navbar = () => {
         <NavLink to="/addspot">Add spot</NavLink>
       </li>
       <li>
-        <NavLink to="/">My List</NavLink>
+        <NavLink to={`/mylist/${userId}`}>My List</NavLink>
       </li>
       {!user && (
         <>
@@ -82,13 +83,41 @@ const Navbar = () => {
         <div className="flex items-center hover:scale-105 font">
           <DarkModeToggle></DarkModeToggle>
         </div>
+
         {user && (
-          <button
-            onClick={handleLogout}
-            className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 btn border-none text-gray-200 hover:bg-black transition-all  border ml-3 "
-          >
-            Logout
-          </button>
+          <div className="flex justify-center ml-3">
+            {user?.photoURL ? (
+              <div
+                className="tooltip tooltip-bottom"
+                data-tip={user.displayName}
+              >
+                <img
+                  className="w-8 h-8 rounded-full "
+                  src={user.photoURL}
+                  alt=""
+                />
+              </div>
+            ) : (
+              <div
+                className="tooltip tooltip-bottom"
+                data-tip={user.displayName}
+              >
+                <img
+                  className="w-10 h-10 rounded-full dark:bg-gray-300"
+                  src={
+                    "https://icons.veryicon.com/png/o/miscellaneous/standard/avatar-15.png"
+                  }
+                  alt=""
+                />
+              </div>
+            )}
+            <button
+              onClick={handleLogout}
+              className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500  border-none text-gray-200 hover:bg-black transition-all  border ml-3 px-4 py-1 rounded-lg"
+            >
+              Logout
+            </button>
+          </div>
         )}
       </div>
     </div>

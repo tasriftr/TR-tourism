@@ -12,15 +12,19 @@ const CountryCard = ({ country }) => {
         style={{ "--image-url": `url(${country_image})` }}
         className="bg-[image:var(--image-url)] bg-cover bg-no-repeat bg-center flex    flex-col  rounded-xl  max-w-[550px]   flex-1 justify-between mx-auto hover:scale-[102%] transition-all   text-center cursor-pointer "
       >
-        <div className="bg-gray-900 bg-opacity-40 w-full h-full p-5 hover:backdrop-blur-lg  rounded-xl flex flex-col flex-1 justify-between">
+        <div className="dark:bg-gray-900 bg-white  dark:bg-opacity-40 bg-opacity-60 w-full h-full p-5 hover:backdrop-blur-lg  rounded-xl flex flex-col flex-1 justify-between">
           <Fade direction="down">
             {" "}
-            <h3 className="text-xl font-semibold [text-shadow:_0_1px_0_var(--tw-shadow-color)]">
+            <h3 className="text-2xl mb-3 font-semibold [text-shadow:_0_1px_0_var(--tw-shadow-color)]">
               {country_name}
             </h3>
           </Fade>
           <Fade>
-            <p className="mb-5">{country_des}</p>
+            <p className="font-medium mb-5">
+              {country_des.length > 150
+                ? `${country_des.slice(0, 150)}...`
+                : country_des}
+            </p>
           </Fade>
           <Fade direction="up">
             <Link

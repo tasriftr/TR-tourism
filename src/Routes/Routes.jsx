@@ -6,6 +6,7 @@ import Login from "../Pages/Login";
 import AddSpot from "../Pages/AddSpot";
 import SpotDetails from "../Pages/SpotDetails";
 import CountryList from "../Pages/CountryList";
+import MyList from "../Pages/MyList";
 
 const router = createBrowserRouter([
   {
@@ -40,6 +41,12 @@ const router = createBrowserRouter([
         element: <CountryList></CountryList>,
         loader: ({ params }) =>
           fetch(`http://localhost:5300/country/${params.country_name}`),
+      },
+      {
+        path: "/mylist/:userId",
+        element: <MyList></MyList>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5300/mylist/${params.userId}`),
       },
     ],
   },

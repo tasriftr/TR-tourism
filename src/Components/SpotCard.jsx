@@ -36,7 +36,7 @@ const SpotCard = ({ spot }) => {
     <Fade>
       <div className="flex   flex-col border-t border-l rounded-xl border-gray-300 shadow-lg max-w-[450px] bg-[#efeee9]  flex-1 justify-between mx-auto hover:scale-[102%] transition-all hover:bg-[#f7f6f4] dark:bg-gradient-to-r dark:from-[#141414] dark:from-10% dark:via-[#000809] dark:via-60% dark:to-[#001813] dark:to-90% dark:border dark:border-gray-800 hover:dark:bg-gray-800">
         <div className="p-5">
-          <img className="rounded-md " src={image} alt="" />
+          <img className="rounded-md h-72 object-cover" src={image} alt="" />
         </div>
         <div className="flex flex-col px-5 gap-2">
           <h3 className="font-web dark:text-amber-400 text-emerald-700 text-2xl font-bold ">
@@ -54,7 +54,13 @@ const SpotCard = ({ spot }) => {
             </div>
           </div>
           <div className="border-t  border-gray-600 border-dashed"></div>
-          <p>"{short_description}"</p>
+          <p>
+            "
+            {short_description.length > 150
+              ? `${short_description.slice(0, 150)}...`
+              : short_description}
+            "
+          </p>
           <div className="flex gap-4">
             <div className="flex gap-2 items-center text-gray-700 dark:text-gray-200">
               <span className="font-semibold">
