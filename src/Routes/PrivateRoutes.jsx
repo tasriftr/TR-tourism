@@ -22,7 +22,6 @@ import { Navigate, useLocation } from "react-router-dom";
 import Loader from "../Components/Loader";
 import { useContext, useEffect, useState } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
-import Swal from "sweetalert2";
 import toast from "react-hot-toast";
 
 const PrivateRoute = ({ children }) => {
