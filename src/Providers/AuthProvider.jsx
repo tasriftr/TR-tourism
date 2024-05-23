@@ -53,6 +53,7 @@ const AuthProvider = ({ children }) => {
   const logout = () => {
     setUser(null);
     signOut(auth);
+    setLoading(false);
     toast.success(" User Logged out");
   };
 

@@ -16,14 +16,18 @@ const Navbar = () => {
         <NavLink to="/">Home</NavLink>
       </li>
       <li>
-        <NavLink to="/">All spot</NavLink>
+        <NavLink to="/allspot">All spot</NavLink>
       </li>
-      <li>
-        <NavLink to="/addspot">Add spot</NavLink>
-      </li>
-      <li>
-        <NavLink to={`/mylist/${userId}`}>My List</NavLink>
-      </li>
+      {user && (
+        <>
+          <li>
+            <NavLink to="/addspot">Add spot</NavLink>
+          </li>
+          <li>
+            <NavLink to={`/mylist/${userId}`}>My List</NavLink>
+          </li>
+        </>
+      )}
       {!user && (
         <>
           <li>

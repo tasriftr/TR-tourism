@@ -12,8 +12,11 @@ import {
   FaBus,
   FaCanadianMapleLeaf,
   FaFlag,
+  FaMailBulk,
   FaRegBuilding,
+  FaUser,
 } from "react-icons/fa";
+import { FaSquareLetterboxd } from "react-icons/fa6";
 
 const SpotDetails = () => {
   const spot = useLoaderData();
@@ -29,9 +32,10 @@ const SpotDetails = () => {
     user_name,
     _id,
     totalVisitorsPerYear,
+    email,
   } = spot;
   return (
-    <div className="flex w-full flex-col border rounded-xl border-gray-300 shadow-lg  bg-[#efeee9] flex-1 justify-between mx-auto hover:scale-[102%] transition-all hover:bg-[#f7f6f4] dark:bg-gradient-to-r dark:from-[#141414] dark:from-10% dark:via-[#000809] dark:via-60% dark:to-[#001813] dark:to-90% dark:border dark:border-gray-800 hover:dark:bg-gray-800">
+    <div className="flex w-full md:w-11/12 lg:w-9/12 flex-col border rounded-xl border-gray-300 dark:border-gray-700 shadow-lg   flex-1 justify-between mx-auto  transition-all  mb-11">
       <div className="p-5">
         <img className="rounded-md " src={photo} alt="" />
       </div>
@@ -99,22 +103,37 @@ const SpotDetails = () => {
               {location}
             </p>
           </div>
+          <div className="border-t  border-gray-600 border-dashed mb-1"></div>
+          <div>
+            <p className="text-xl">Added By</p>
+          </div>
+          <div className="flex gap-3">
+            <div className="flex gap-2 items-center text-gray-700 dark:text-gray-200">
+              <FaUser />
+
+              <p>
+                {" "}
+                <span className="font-semibold">User Name: </span>
+                {user_name}
+              </p>
+            </div>
+            <div className="flex gap-2 items-center ">
+              <FaSquareLetterboxd />
+
+              <p>
+                <span className="font-semibold"> Email: </span>
+                {email}{" "}
+              </p>
+            </div>
+          </div>
         </div>
       </div>
       <div className="w-full border-b border-slate-500 rounded-b-xl bg-slate-800 flex flex-col text-gray-200 gap-2 mt-3">
         <div className="flex  gap-2 px-6  text-center mx-auto mt-5">
-          <p className="jaro-font text-blue-500">
+          <p className="jaro-font text-blue-500 text-3xl my-10">
             {" "}
             Total Visitor : {totalVisitorsPerYear}
           </p>
-        </div>
-        <div className="px-5 my-3">
-          <Link
-            to={`spotdetails/${_id}`}
-            className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 btn w-full border-none text-gray-200 hover:bg-black transition-all mb-2 "
-          >
-            View Details
-          </Link>
         </div>
       </div>
     </div>

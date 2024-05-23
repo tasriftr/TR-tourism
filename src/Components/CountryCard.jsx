@@ -20,7 +20,7 @@ const CountryCard = ({ country }) => {
             </h3>
           </Fade>
           <Fade>
-            <p className="font-medium mb-5">
+            <p className="font-normal mb-5">
               {country_des.length > 150
                 ? `${country_des.slice(0, 150)}...`
                 : country_des}

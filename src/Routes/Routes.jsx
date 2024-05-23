@@ -7,6 +7,8 @@ import AddSpot from "../Pages/AddSpot";
 import SpotDetails from "../Pages/SpotDetails";
 import CountryList from "../Pages/CountryList";
 import MyList from "../Pages/MyList";
+import AllSpot from "../Pages/AllSpot";
+import PrivateRoute from "./PrivateRoutes";
 
 const router = createBrowserRouter([
   {
@@ -19,6 +21,11 @@ const router = createBrowserRouter([
         loader: () => fetch("http://localhost:5300/spot"),
       },
       {
+        path: "/allspot",
+        element: <AllSpot></AllSpot>,
+        loader: () => fetch("http://localhost:5300/spot"),
+      },
+      {
         path: "/register",
         element: <Register></Register>,
       },
@@ -28,11 +35,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/addspot",
-        element: <AddSpot></AddSpot>,
+        element: (
+          <PrivateRoute>
+            <AddSpot></AddSpot>
+          </PrivateRoute>
+        ),
       },
       {
         path: "/spotdetails/:id",
-        element: <SpotDetails></SpotDetails>,
+        element: (
+          <PrivateRoute>
+            <SpotDetails></SpotDetails>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5300/spot/${params.id}`),
       },
@@ -44,9 +59,23 @@ const router = createBrowserRouter([
       },
       {
         path: "/mylist/:userId",
-        element: <MyList></MyList>,
+        element: (
+          <PrivateRoute>
+            <MyList></MyList>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
           fetch(`http://localhost:5300/mylist/${params.userId}`),
+      },
+      {
+        path: "/mylist/:userId/spotdetails/:id",
+        element: (
+          <PrivateRoute>
+            <SpotDetails></SpotDetails>
+          </PrivateRoute>
+        ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5300/spot/${params.id}`),
       },
     ],
   },
