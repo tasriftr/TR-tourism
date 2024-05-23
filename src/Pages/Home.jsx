@@ -1,8 +1,8 @@
 import { useContext } from "react";
-import DarkModeToggle from "../DarkModeToggle";
 import { AuthContext } from "../Providers/AuthProvider";
 import { useLoaderData } from "react-router-dom";
 import TouristSpot from "../Components/TouristSpot";
+import Country from "../Components/Country";
 
 const Home = () => {
   const { user } = useContext(AuthContext);
@@ -15,6 +15,7 @@ const Home = () => {
       </p>
       <p>{user?.email}</p>
       <TouristSpot spots={spots}></TouristSpot>
+      <Country></Country>
     </div>
   );
 };
