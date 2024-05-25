@@ -15,7 +15,7 @@ const CountryCard = ({ country }) => {
         <div className="dark:bg-gray-900 bg-white  dark:bg-opacity-40 bg-opacity-60 w-full h-full p-5 hover:backdrop-blur-lg  rounded-xl flex flex-col flex-1 justify-between">
           <Fade direction="down">
             {" "}
-            <h3 className="text-2xl mb-3 font-semibold [text-shadow:_0_1px_0_var(--tw-shadow-color)]">
+            <h3 className="text-2xl text-blue-100 mb-3 font-semibold [text-shadow:_0_1px_0_var(--tw-shadow-color)]">
               {country_name}
             </h3>
           </Fade>
