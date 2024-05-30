@@ -1,8 +1,14 @@
-# React + Vite
+Name: TR-tourism
+Live link: https://tr-tourism.web.app/
+Category: South east asia
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- Tourist spot details
+- login and register feature
+- add spot option
+- update spot
+- use social login github and google
 
-Currently, two official plugins are available:
+used challenging npm package
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+React-simple-typewriter
+React Awesome reveal

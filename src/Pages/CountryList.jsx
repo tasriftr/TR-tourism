@@ -5,16 +5,6 @@ import SpotCard from "../Components/SpotCard";
 const CountryList = () => {
   const spots = useLoaderData();
   const { country_name } = useParams();
-  //   if (spots.length > 1) {
-  //     return (
-  //       <div className="flex w-full h-full min-h-96 items-center justify-center">
-  //         <div className="dark:text-amber-400  mb-9 font-bold md:text-3xl text-2xl mx-auto flex  w-fit gap-2 items-center">
-  //           <FaMountainSun></FaMountainSun>{" "}
-  //           <h2>Tourist Spots of {country_name}</h2>
-  //         </div>
-  //       </div>
-  //     );
-  //   }
 
   return (
     <div className="w-full border-t border-l dark:border-slate-600 border-slate-300 dark:bg-[#242c38] py-10 px-5 rounded-xl mt-10">

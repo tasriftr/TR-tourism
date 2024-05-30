@@ -47,7 +47,8 @@ const AddSpot = () => {
     };
     console.log(newSpot);
     // send data to backend
-    fetch("http://localhost:5300/spot", {
+    fetch("https://tr-tourism.vercel.app/spot", {
+      // mode: "no-cors",
       method: "POST",
       headers: {
         "content-type": "application/json",

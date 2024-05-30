@@ -1,14 +1,14 @@
 const Footer = () => {
   return (
-    <footer className="footer p-10 bg-neutral text-neutral-content mt-10">
+    <footer className="footer p-10 md:py-20 bg-neutral text-neutral-content mt-20">
       <div className="w-[96%] md:w-11/12 mx-auto lg:max-w-[1600px] flex md:flex-row items-center justify-center gap-5 md:gap-16 lg:gap-28">
-        <aside className="flex  md:flex-row flex-col justify-center items-center md:gap-16 gap-5">
+        <aside className="flex  flex-row  justify-center items-center md:gap-16 gap-5">
           <div className="flex justify-center items-center">
-            <img
-              className="md:w-14 w-9"
-              src="../../public/tr-tourism-round.svg"
-              alt=""
-            />
+            <div className="md:w-14 w-10 h-10 md:h-14 flex items-center justify-center bg-[#00B21E] rounded-full">
+              <p className="font-extrabold text-3xl md:text-4xl text-white">
+                tr
+              </p>
+            </div>
             <h1 className="font-bold md:text-3xl text-xl">tourism</h1>
           </div>
           <p className="text-center">

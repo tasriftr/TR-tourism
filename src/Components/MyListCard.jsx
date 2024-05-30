@@ -44,7 +44,7 @@ const MyListCard = ({ spot, setSpots, spots }) => {
     }).then((result) => {
       if (result.isConfirmed) {
         console.log("delete confirmed");
-        fetch(`http://localhost:5300/spot/${_id}`, {
+        fetch(`https://tr-tourism.vercel.app/spot/${_id}`, {
           method: "DELETE",
         })
           .then((res) => res.json())
@@ -65,7 +65,7 @@ const MyListCard = ({ spot, setSpots, spots }) => {
   };
   return (
     <Fade>
-      <div className="flex   flex-col border-t border-l rounded-xl border-gray-300 shadow-lg max-w-[450px] bg-[#efeee9]  flex-1 justify-between mx-auto hover:scale-[102%] transition-all hover:bg-[#f7f6f4] dark:bg-gradient-to-r dark:from-[#141414] dark:from-10% dark:via-[#000809] dark:via-60% dark:to-[#001813] dark:to-90% dark:border dark:border-gray-800 hover:dark:bg-gray-800">
+      <div className="flex   flex-col  rounded-xl  shadow-lg max-w-[450px] bg-[#F5F5F7]  flex-1 justify-between mx-auto hover:scale-[101%] transition-all hover:bg-[#f7f6f4] dark:bg-[#161b22]  hover:dark:bg-gray-800 hover:shadow-md">
         <div className="p-5">
           <img className="rounded-md h-72 object-cover" src={image} alt="" />
         </div>
@@ -84,7 +84,7 @@ const MyListCard = ({ spot, setSpots, spots }) => {
               </p>
             </div>
           </div>
-          <div className="border-t  border-gray-600 border-dashed"></div>
+          <div className="border-t  border-gray-300 border"></div>
           <p>
             "
             {short_description.length > 150
@@ -141,24 +141,24 @@ const MyListCard = ({ spot, setSpots, spots }) => {
             </div>
           </div>
         </div>
-        <div className="w-full dark:border-b dark:border-l border-slate-500 rounded-b-xl bg-[#f7f6f4]  dark:bg-slate-800 flex flex-col text-gray-200 gap-2 mt-3 ">
+        <div className="w-full   rounded-b-xl bg-[#f7f6f4]  dark:bg-[#000000] flex flex-col text-gray-200 gap-2 mt-3 ">
           <div className="flex  gap-2 px-6  text-center mx-auto mt-5">
             <Fade direction="up">
-              <p className="jaro-font text-gray-700 font-semibold text-2xl tracking-widest	dark:text-blue-400">
+              <p className="font-web text-gray-700 font-semibold text-2xl tracking-widest	dark:text-blue-400">
                 {totalVisitorsPerYear} Visitor/Year
               </p>
             </Fade>
           </div>
 
-          <div className="px-5 my-3 flex gap-3">
+          <div className="px-5 mt-3 mb-5 flex gap-3 justify-center ">
             <Link
               to={`updatespot/${_id}`}
-              className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500 btn w-1/2 border-none text-gray-200 hover:bg-black transition-all mb-2  border"
+              className="bg-[#0071e3] text-white font-semibold mb-2 flex items-center px-7 rounded-full hover:scale-105 transition-transform py-2"
             >
               Update
             </Link>
             <button
-              className="bg-gradient-to-r hover:from-green-400 hover:to-blue-500 from-pink-500 to-yellow-500 btn w-40 mx-auto border-none text-gray-200  transition-all mb-2  border"
+              className="border border-[#06c] text-[#06c] ont-semibold mb-2 flex items-center px-7 rounded-full hover:scale-105 transition-transform py-2"
               onClick={() => handleDelete(_id)}
             >
               Delete

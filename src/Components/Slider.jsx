@@ -17,7 +17,7 @@ import { Fade } from "react-awesome-reveal";
 const Slider = () => {
   const [countries, setCountries] = useState([]);
   useEffect(() => {
-    fetch("http://localhost:5300/country")
+    fetch("https://tr-tourism.vercel.app/country")
       .then((res) => res.json())
       .then((data) => setCountries(data));
   }, []);
@@ -83,7 +83,7 @@ const Slider = () => {
         className="mySwiper"
       >
         {countries.map((country) => (
-          <SwiperSlide key={country._id + "22"}>
+          <SwiperSlide key={country._id + 12}>
             {() =>
               slideContent(
                 country.country_image,

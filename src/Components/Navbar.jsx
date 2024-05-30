@@ -1,4 +1,4 @@
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import DarkModeToggle from "../DarkModeToggle";
 import { useContext } from "react";
 import { AuthContext } from "../Providers/AuthProvider";
@@ -41,7 +41,7 @@ const Navbar = () => {
     </>
   );
   return (
-    <div className="navbar mt-2 mb-9">
+    <div className="navbar mt-2 mb-9 z-10">
       <div className="navbar-start">
         <div className="dropdown">
           <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
@@ -62,23 +62,28 @@ const Navbar = () => {
           </div>
           <ul
             tabIndex={0}
-            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52"
+            className="menu menu-sm dropdown-content mt-3 z-[1] p-2 shadow  rounded-box w-52 bg-white dark:bg-black"
           >
             {navLinks}
           </ul>
         </div>
-        <div>
+        <Link to={"/"}>
           <div>
             <div className="flex justify-center items-center">
-              <img
-                className="md:w-14 w-9"
+              {/* <img
+                className="md:w-14 w-12"
                 src="../../public/tr-tourism-round.svg"
                 alt=""
-              />
+              /> */}
+              <div className="md:w-14 w-10 h-10 md:h-14 flex items-center justify-center bg-[#00B21E] rounded-full">
+                <p className="font-extrabold text-3xl md:text-4xl text-white">
+                  tr
+                </p>
+              </div>
               <h1 className="font-bold md:text-3xl text-xl">tourism</h1>
             </div>
           </div>
-        </div>
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">{navLinks}</ul>
@@ -89,7 +94,7 @@ const Navbar = () => {
         </div>
 
         {user && (
-          <div className="flex justify-center ml-3">
+          <div className="flex justify-center items-center ml-3">
             {user?.photoURL ? (
               <div
                 className="tooltip tooltip-bottom"
@@ -117,7 +122,7 @@ const Navbar = () => {
             )}
             <button
               onClick={handleLogout}
-              className="bg-gradient-to-r from-green-400 to-blue-500 hover:from-pink-500 hover:to-yellow-500  border-none text-gray-200 hover:bg-black transition-all  border ml-3 px-4 py-1 rounded-lg"
+              className="bg-[#0071e3] text-white font-semibold btn ml-3 px-6 py-0 rounded-full border-none"
             >
               Logout
             </button>

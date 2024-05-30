@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
-
 import Swal from "sweetalert2";
 import { AuthContext } from "../Providers/AuthProvider";
-import { useLoaderData } from "react-router-dom";
+import { useLoaderData, useNavigate } from "react-router-dom";
 
 const UpdateSpot = () => {
+  const navigate = useNavigate();
+
   const spot = useLoaderData();
   const {
     name,
@@ -20,9 +21,10 @@ const UpdateSpot = () => {
     totalVisitorsPerYear,
   } = spot;
   const { user } = useContext(AuthContext);
-  const [selectedValue, setSelectedValue] = useState("");
-  const [selectedValueTravel, setSelectedValueTravel] = useState("");
-  const [selectedValueSeasonality, setSelectedValueSeasonality] = useState("");
+  const [selectedValue, setSelectedValue] = useState(country);
+  const [selectedValueTravel, setSelectedValueTravel] = useState(travel_time);
+  const [selectedValueSeasonality, setSelectedValueSeasonality] =
+    useState(seasonality);
 
   const handleSelectChange = (event) => {
     setSelectedValue(event.target.value);
@@ -33,6 +35,7 @@ const UpdateSpot = () => {
   const handleSelectChangeSeasonality = (event) => {
     setSelectedValueSeasonality(event.target.value);
   };
+
   const handleUpdateCoffee = (event) => {
     event.preventDefault();
     const form = event.target;
@@ -44,9 +47,6 @@ const UpdateSpot = () => {
     const seasonality = form.seasonality.value;
     const totalVisitorsPerYear = form.totalVisitorsPerYear.value;
     const travel_time = form.travel_time.value;
-    const user_name = user.displayName;
-    const email = user.email;
-
     const photo = form.photo.value;
     const newSpot = {
       name,
@@ -57,15 +57,14 @@ const UpdateSpot = () => {
       seasonality,
       travel_time,
       photo,
-
       totalVisitorsPerYear,
     };
     console.log(newSpot);
     // send data to backend
-    fetch(`http://localhost:5300/spot/${_id}`, {
+    fetch(`https://tr-tourism.vercel.app/spot/${_id}`, {
       method: "PUT",
       headers: {
-        "content-type": "application/json",
+        "Content-Type": "application/json",
       },
       body: JSON.stringify(newSpot),
     })
@@ -78,8 +77,26 @@ const UpdateSpot = () => {
             text: "Updated Successfully",
             icon: "success",
             confirmButtonText: "Ok",
+          }).then(() => {
+            navigate("/"); // Redirect to home page or desired route after successful update
+          });
+        } else {
+          Swal.fire({
+            title: "Error!",
+            text: "Failed to update. Please try again.",
+            icon: "error",
+            confirmButtonText: "Ok",
           });
         }
+      })
+      .catch((error) => {
+        console.error("Error updating spot:", error);
+        Swal.fire({
+          title: "Error!",
+          text: "An error occurred. Please try again later.",
+          icon: "error",
+          confirmButtonText: "Ok",
+        });
       });
   };
   return (
@@ -114,7 +131,6 @@ const UpdateSpot = () => {
               <select
                 name="country"
                 value={selectedValue}
-                defaultValue={country}
                 onChange={handleSelectChange}
                 className="select select-bordered w-full max-w-xs dark:bg-gray-700"
               >
@@ -163,7 +179,6 @@ const UpdateSpot = () => {
           </div>
         </div>
         {/* short description*/}
-
         <div className="md:flex md:gap-2 mb-8">
           {/* description */}
           <div className="form-control h-36 md:w-full">
@@ -192,7 +207,6 @@ const UpdateSpot = () => {
             </label>
             <label className="input-group">
               <select
-                defaultValue={seasonality}
                 name="seasonality"
                 value={selectedValueSeasonality}
                 onChange={handleSelectChangeSeasonality}
@@ -208,11 +222,10 @@ const UpdateSpot = () => {
           {/* travel time */}
           <div className="form-control md:w-1/2">
             <label className="label">
-              <span className="label-text dark:text-white">Travel time</span>
+              <span className="label-text dark:text-white">Travel Time</span>
             </label>
             <label className="input-group">
               <select
-                defaultValue={travel_time}
                 name="travel_time"
                 value={selectedValueTravel}
                 onChange={handleSelectChangeTravel}
@@ -230,8 +243,7 @@ const UpdateSpot = () => {
             </label>
           </div>
         </div>
-        {/* tptal visitpr and use}
-          {/* location */}
+        {/* total visitor */}
         <div className="md:flex md:gap-2 mb-2">
           <div className="form-control md:w-1/2">
             <label className="label">

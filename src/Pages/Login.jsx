@@ -3,6 +3,7 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../Providers/AuthProvider";
 import { FaEyeSlash, FaRegEye } from "react-icons/fa";
 import mountain from "/mountain.svg";
+import SocialLogin from "../Components/SocialLogin";
 
 const Login = () => {
   const { signInUser } = useContext(AuthContext);
@@ -103,6 +104,7 @@ const Login = () => {
             Register
           </Link>
         </p>
+        <SocialLogin></SocialLogin>
       </div>
       <div className="w-[400px] md:w-[500] lg:w-[600px]">
         <img src={mountain} alt="" />
